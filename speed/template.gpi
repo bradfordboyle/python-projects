@@ -1,0 +1,18 @@
+load "global._include_.gpi"
+
+unset key
+
+set timefmt "%Y-%m-%dT%H:%M:%S"
+set format x "%H:%M"
+set xdata time
+set xtics rotate by -45 "{{ start_time }}",900,"{{ end_time }}"
+set xlabel "{{ xlabel }}"
+unset mxtics
+
+set ylabel "{{ ylabel }}"
+set autoscale xy
+
+set grid
+
+plot	'-' using 1:2 title "Speed" w l ls 3
+

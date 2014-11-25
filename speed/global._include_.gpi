@@ -1,0 +1,10 @@
+set terminal epslatex color solid standalone size 10,7
+
+# Define consistent line styles for all plots
+set style line 1 lt 1 lw 5 lc rgb "#dc322f"
+# green
+set style line 2 lt 2 lw 5 lc rgb "#859900"
+# blue
+set style line 3 lt 3 lw 5 lc rgb "#268bd2"
+# magenta
+set style line 4 lt 4 lw 5 lc rgb "#d33682"
