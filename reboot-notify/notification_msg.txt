@@ -1,0 +1,7 @@
+This is a gentle reminder that the SysAdmins will be performing the regularly
+scheduled system maintenance this Friday, starting at 9:00am. Downtime should
+be minimal, but it is likely that services will be temporarily be unavailable
+while the servers are rebooted.
+
+If you currently have any programs running that you need to let finish running,
+you must email abc@xyz.com before 9:00am Friday morning.
