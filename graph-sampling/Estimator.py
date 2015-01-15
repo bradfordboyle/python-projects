@@ -8,19 +8,17 @@ import scipy.stats
 class Estimator(object):
     def __init__(self):
         self._n = 0
-        self._mean = 0
-        self._variance = 0
+        self._M = 0
+        self._S = 0
 
     def __str__(self):
         return '\t{:.4f}\t{:.4f}'.format(self._mean, self.confidence())
 
     def _observation(self, x):
+        delta = x - self._M
+        self._M += delta / float(self.n + 1)
+        self._S += delta * (x - self._M)
         self._n += 1
-        mean = self._mean + (x - self._mean) / float(self.n)
-        variance = self._variance + self._mean ** 2 - (mean) ** 2
-        variance += (x ** 2 - self._variance - self._mean ** 2) /float(self._n)
-        self._mean = mean
-        self._variance = variance
 
     @property
     def n(self):
@@ -28,14 +26,15 @@ class Estimator(object):
 
     @property
     def mean(self):
-        return self._mean
+        return self._M
 
     @property
-    def std_dev(self):
-        return sqrt(self._n * self._variance / float(self._n - 1))
+    def variance(self):
+        return self._S / float(self._n - 1)
 
     def confidence(self, level=0.95):
-        return scipy.stats.t.ppf((1 + level) / 2.0, self._n - 1) * self.std_dev / sqrt(self._n)
+        t = scipy.stats.t.ppf((1 + level) / 2.0, self._n - 1)
+        return t * sqrt(self.variance / self._n)
 
 
 class MonteCarlo(Estimator):
