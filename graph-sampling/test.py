@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from builders import ErdosRenyi
+from builders import ErdosRenyi, Barabasi
 from Experiment import Experiment
 from Estimator import MonteCarlo, Greedy, GreedyRestart, Annealing
 
